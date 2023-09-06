@@ -1,0 +1,52 @@
+{
+    "search": {
+        "seat": {
+            "search": true,
+            "markup": {
+                "amount": 800,
+                "decimal_places": 2,
+                "currency": "USD"
+            }
+        },
+        "bag": {
+            "search": true,
+            "markup": {
+                "amount": 800,
+                "decimal_places": 2,
+                "currency": "USD"
+            }
+        }
+    },
+    "tickets": [
+        {
+            "status": "offered",
+            "journeys": [
+                {
+                    "segments": [
+                        {
+                            "departure_airport": "MCO",
+                            "departure_time": "2023-08-30T20:18:00-04:00",
+                            "arrival_airport": "MSY",
+                            "arrival_time": "2023-08-30T21:08:00-04:00",
+                            "marketing_airline": "NK",
+                            "marketing_flight_number": "555",
+                            "fare_basis": "UA7NR",
+                            "fare_class": "U",
+                            "fare_family": "Standard Fare"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "language": "en-US",
+    "country": "US",
+    "currency": "USD",
+    "passengers": [
+        {
+            "type": "adult",
+            "first_names": "Passenger",
+            "surname": "1"
+        }
+    ]
+}

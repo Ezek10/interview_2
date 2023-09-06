@@ -1,0 +1,6 @@
+I would improve the code by creating data validation, with pydantic as an example, but the time of 2 hours doesn't allows it.
+
+I need to say that the info I received was an already made answer, with information I can't duplicate because of the dates given.
+I'l send the first exercise remade by me, within 2 hours and the data received, and the second task wasn't clear enough to understand the expected output.
+
+After received that I should change the flight dates in order to work, I change all the input jsons to 1 month later.

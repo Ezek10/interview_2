@@ -1,0 +1,282 @@
+Seatmaps:
+  type: array
+  description: All the seatmaps for the search.
+  items:
+    $ref: '#/Seatmap'
+AvailableSeatmap:
+  type: object
+  description: All the information needed to render a seatmap for a customer.
+  required:
+    - segment_id
+    - seat_categories
+    - decks
+    - available
+  properties:
+    segment_id:
+      $ref: 'ids.yaml#/SegmentID'
+    seat_categories:
+      $ref: '#/SeatCategories'
+    decks:
+      $ref: '#/Decks'
+    available:
+      type: boolean
+      enum:
+        - true
+UnavailableSeatmap:
+  type: object
+  description: This seatmap is not available
+  required:
+    - segment_id
+    - available
+  properties:
+    available:
+      type: boolean
+      enum:
+        - false
+    segment_id:
+      $ref: 'ids.yaml#/SegmentID'
+Seatmap:
+  oneOf:
+    - $ref: '#/UnavailableSeatmap'
+    - $ref: '#/AvailableSeatmap'
+SeatCategories:
+  type: array
+  items:
+    $ref: '#/SeatCategory'
+SeatCategory:
+  type: object
+  required:
+    - seat_category_id
+    - rank
+    - display_name
+    - description
+    - image_url
+    - price_range
+  properties:
+    seat_category_id:
+      $ref: 'ids.yaml#/SeatCategoryID'
+    rank:
+      description: The rank of the category, with 0 being the least desirable seat category.
+      type: number
+    display_name:
+      description: The customer-facing name of the category.
+      type: string
+    description:
+      description: The customer-facing description of the category.
+      type: string
+    image_url:
+      description: The hosted image for the category.
+      type: string
+    price_range:
+      $ref: '#/PriceRange'
+PriceRange:
+  type: object
+  description: The map from passenger ID to price range.
+  additionalProperties:
+    $ref: '#/EachPriceRange'
+EachPriceRange:
+  x-additionalPropertiesName: passenger_id
+  type: object
+  description: The price range.
+  required:
+    - passenger_id
+    - start_price
+    - end_price
+  properties:
+    passenger_id:
+      type: string
+    start_price:
+      $ref: 'price.yaml#/SimplePrice'
+    end_price:
+      $ref: 'price.yaml#/SimplePrice'
+Decks:
+  type: array
+  items:
+    $ref: '#/Deck'
+Deck:
+  type: object
+  required:
+    - compartments
+    - upper
+  properties:
+    compartments:
+      $ref: '#/Compartments'
+    wings:
+      $ref: '#/Wings'
+    upper:
+      type: boolean
+Compartments:
+  type: array
+  items:
+    $ref: '#/Compartment'
+Compartment:
+  type: object
+  required:
+    - seat_rows
+  properties:
+    definition:
+      $ref: '#/CompartmentDefinition'
+    seat_rows:
+      $ref: '#/SeatRows'
+CompartmentDefinition:
+  type: object
+  required:
+    - cabin
+    - rows
+    - columns
+    - bulkhead_front
+    - bulkhead_rear
+  properties:
+    cabin:
+      $ref: '#/Cabin'
+    rows:
+      type: array
+      items:
+        type: integer
+    columns:
+      type: array
+      items:
+        $ref: '#/Columns'
+    bulkhead_front:
+      type: boolean
+    bulkhead_rear:
+      type: boolean
+Cabin:
+  type: string
+SeatRows:
+  type: array
+  items:
+    $ref: '#/SeatRow'
+SeatRow:
+  type: object
+  required:
+    - row_groups
+  properties:
+    left_exit:
+      type: boolean
+    right_exit:
+      type: boolean
+    row:
+      $ref: '#/Row'
+    row_groups:
+      $ref: '#/RowGroups'
+RowGroups:
+  type: array
+  items:
+    $ref: '#/RowGroup'
+RowGroup:
+  type: array
+  items:
+     $ref: '#/RowGroupItem'
+RowGroupItem:
+  type: object
+  required:
+    - display_name
+    - bookable_seat
+    - row
+    - columns
+    - width
+    - type
+  properties:
+    product_id:
+      $ref: 'ids.yaml#/ProductID'
+    display_name:
+      type: string
+    seat:
+      type: string
+    seat_category_id:
+      type: string
+    bookable_seat:
+      type: boolean
+    price_and_availability:
+      $ref: 'price.yaml#/PriceAndAvailability'
+    row:
+      $ref: '#/Row'
+    columns:
+      $ref: '#/Columns'
+    width:
+      type: integer
+      description: The width in columns.
+    type:
+      $ref: '#/RowGroupItemTypes'
+    characteristics:
+      $ref: '#/SeatCharacteristics'
+Columns:
+  type: array
+  items:
+    $ref: '#/Column'
+Column:
+  type: string
+  example: A
+  pattern: "[A-Z]"
+  description: The seat column. For example, seat 12A is in column A.
+Row:
+  type: number
+  example: 12
+  description: The seat row. For example, seat 12A is in row 12.
+  nullable: true
+SeatCharacteristics:
+  type: array
+  items:
+    type: string
+    enum:
+      - aisle
+      - bassinet
+      - bulkhead
+      - chargeable
+      - disabled
+      - electronic_connection
+      - exit_row
+      - extra_leg_room
+      - individual_screen
+      - infant_allowed
+      - middle
+      - near_closet
+      - near_kitchen
+      - near_bathroom
+      - near_stairs
+      - no_child
+      - no_window
+      - over_wing
+      - pet
+      - quiet_zone
+      - restricted_recline
+      - undesirable
+      - window
+Wings:
+  type: object
+  required:
+    - start_row
+    - end_row
+  properties:
+    start_row:
+      type: integer
+      nullable: true
+    end_row:
+      type: integer
+      nullable: true
+AmenityTypes:
+  type: string
+  enum:
+    - stairs
+    - luggage_storage
+    - table
+    - airphone
+    - crew_seat
+    - missing
+    - kitchen
+    - bathroom
+    - closet
+RowGroupItemTypes:
+  type: string
+  enum:
+    - stairs
+    - luggage_storage
+    - table
+    - airphone
+    - crew_seat
+    - missing
+    - kitchen
+    - bathroom
+    - closet
+    - seat

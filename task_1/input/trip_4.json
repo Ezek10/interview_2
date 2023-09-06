@@ -1,0 +1,69 @@
+{
+    "search": {
+        "seat": {
+            "search": true,
+            "markup": {
+                "amount": 800,
+                "decimal_places": 2,
+                "currency": "USD"
+            }
+        },
+        "bag": {
+            "search": true,
+            "markup": {
+                "amount": 800,
+                "decimal_places": 2,
+                "currency": "USD"
+            }
+        }
+    },
+    "tickets": [
+        {
+            "status": "offered",
+            "journeys": [
+                {
+                    "segments": [
+                        {
+                            "departure_airport": "ATL",
+                            "departure_time": "2023-09-23T11:21:00-04:00",
+                            "arrival_airport": "IAH",
+                            "arrival_time": "2023-09-23T12:43:00-04:00",
+                            "marketing_airline": "NK",
+                            "marketing_flight_number": "963",
+                            "fare_basis": "PA14V2",
+                            "fare_class": "P",
+                            "fare_family": "Standard Fare"
+                        }
+                    ]
+                },
+                {
+                    "segments": [
+                        {
+                            "departure_airport": "IAH",
+                            "departure_time": "2023-09-25T07:30:00-04:00",
+                            "arrival_airport": "ATL",
+                            "arrival_time": "2023-09-25T10:31:00-04:00",
+                            "marketing_airline": "NK",
+                            "marketing_flight_number": "962",
+                            "fare_basis": "GA14NR",
+                            "fare_class": "G",
+                            "fare_family": "Standard Fare"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "language": "en-US",
+    "country": "US",
+    "currency": "USD",
+    "passengers": [
+        {
+            "type": "adult",
+            "first_names": "Kazaria",
+            "surname": "D",
+            "date_of_birth": "1988-09-01",
+            "gender": "female"
+        }
+    ]
+}

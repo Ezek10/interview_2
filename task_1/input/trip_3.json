@@ -1,0 +1,54 @@
+{
+    "search": {
+        "seat": {
+            "search": true,
+            "markup": {
+                "amount": 800,
+                "decimal_places": 2,
+                "currency": "USD"
+            }
+        },
+        "bag": {
+            "search": true,
+            "markup": {
+                "amount": 800,
+                "decimal_places": 2,
+                "currency": "USD"
+            }
+        }
+    },
+    "tickets": [
+        {
+            "status": "offered",
+            "journeys": [
+                {
+                    "segments": [
+                        {
+                            "departure_airport": "OAK",
+                            "departure_time": "2023-09-05T06:00:00-04:00",
+                            "arrival_airport": "LAX",
+                            "arrival_time": "2023-09-05T08:07:26-04:00",
+                            "marketing_airline": "NK",
+                            "marketing_flight_number": "1349",
+                            "fare_basis": "WA7NR",
+                            "fare_class": "W",
+                            "fare_family": "Standard Fare"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "language": "en-US",
+    "country": "US",
+    "currency": "USD",
+    "passengers": [
+        {
+            "type": "adult",
+            "first_names": "Azucena",
+            "surname": "M",
+            "date_of_birth": "1999-05-01",
+            "gender": "female"
+        }
+    ]
+}
